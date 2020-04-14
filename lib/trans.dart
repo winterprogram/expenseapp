@@ -6,7 +6,7 @@ class Trans {
   double amount;
   DateTime date;
 
-  Trans(
+  Trans( 
       {@required this.id, 
       @required this.title,
       @required this.amount,

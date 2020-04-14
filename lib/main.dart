@@ -27,41 +27,56 @@ class HomePage extends State<MyApp> {
               ),
             ),
             body: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-               
-              Card(
-                child: Container(
-                  width: double.infinity,
-                  color: Colors.redAccent,
-                  height: 150,
-                  // child: Text('Charts area'),
-                ),
-              ),
-              Card(
-                child: Row(
-                  children: trans.map((test) {
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Card(
+                    child: Container(
+                      width: double.infinity,
+                      color: Colors.redAccent,
+                      height: 150,
+                      // child: Text('Charts area'),
+                    ),
+                  ),
+                  Column(
+                      children: trans.map((test) {
                     return Card(
                       child: Row(
                         children: <Widget>[
                           Container(
-                            child: Text(
-                              test.amount.toString(),
-                            ),
-                          ),
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 30, vertical: 20),
+                              child: Text(
+                                test.amount.toString(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 19),
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.purpleAccent, width: 2)),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10)),
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(test.title),
-                              Text(test.date.toString())
+                              Text(
+                                test.title,
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold),
+                              ),
+                              Container(
+                                child: Text(
+                                  test.date.toString(),
+                                  style: TextStyle(color: Colors.blueGrey),
+                                ),
+                                //  color: ,
+                              )
                             ],
                           )
                         ],
                       ),
                     );
-                  }).toList(),
-                ),
-              )
-            ])));
+                  }).toList())
+                ])));
   }
 }
