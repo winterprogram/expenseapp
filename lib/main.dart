@@ -1,51 +1,48 @@
-import 'package:expenseapp/widget/new_trans.dart';
-import 'package:expenseapp/widget/trans_list.dart';
-import 'package:expenseapp/widget/user_trans.dart';
 import 'package:flutter/material.dart';
-// import './models/trans.dart';
-// import './widget/trans_list.dart';
-import 'package:intl/intl.dart';
-// import 'package:flutter/src/widgets/framework.dart';
+
+import './widgets/user_transactions.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return HomePage();
-  }
-}
-
-class HomePage extends State<MyApp> {
-  // var titles = TextEditingController();
-  // var inpamounts = TextEditingController();
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.purpleAccent,
-              title: Center(
-                child: Text('Expense Tracker'),
+      title: 'Flutter App',
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  // String titleInput;
+  // String amountInput;
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar( backgroundColor: Colors.purpleAccent,
+        title: Text('Flutter App', textAlign: TextAlign.center,),
+      ),
+      body: SingleChildScrollView(
+              child: Column(
+          // mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.blue,
+                child: Text('CHART!'),
+                elevation: 5,
               ),
             ),
-            body: Column(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Column(children: <Widget>[
-                    Card(
-                      elevation: 10,
-                      child: Container(
-                        width: double.infinity,
-                        color: Colors.redAccent,
-                        height: 150,
-                        // child: Text('Charts area'),
-                      ),
-                    ),
-                   Userdata()
-                  ])
-                ])));
+            UserTransactions()
+          ],
+        ),
+      ),
+    );
   }
 }
